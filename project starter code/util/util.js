@@ -35,6 +35,10 @@ import Jimp from "jimp";
 //    files: Array<string> an array of absolute paths to files
  export async function deleteLocalFiles(files) {
   for (let file of files) {
-    fs.unlinkSync(file);
+    try {
+      fs.unlinkSync(file);
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
